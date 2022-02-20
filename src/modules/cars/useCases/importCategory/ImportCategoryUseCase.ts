@@ -29,6 +29,8 @@ class ImportCategoryUseCase {
           });
         })
         .on('end', () => {
+          // eslint-disable-next-line @typescript-eslint/no-floating-promises
+          fs.promises.unlink(file?.path as string);
           resolve(categories);
         })
         .on('error', (error) => {
