@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import { createConnection, getConnectionOptions } from 'typeorm';
 
 interface IOptions {
@@ -7,7 +6,7 @@ interface IOptions {
 
 getConnectionOptions().then((options) => {
   const newOptions = options as IOptions;
-  newOptions.host = 'database_ignit';
+  newOptions.host = 'database';
   createConnection({
     ...options
   });
