@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --inspect --exit-child --transpile-only --respawn --ignore-watch node_modules src/server.ts",
+    "dev": "tsnd --inspect -r tsconfig-paths/register --exit-child --transpile-only --respawn --ignore-watch node_modules src/server.ts",
     "typeorm": "tsnd ./node_modules/typeorm/cli",
     "test": "jest"
   },
@@ -49,6 +49,7 @@
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",
     "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.13.0",
     "typescript": "^4.5.5"
   }
 }
