@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --inspect -r tsconfig-paths/register --exit-child --transpile-only --respawn --ignore-watch node_modules src/server.ts",
+    "dev": "tsnd --inspect -r tsconfig-paths/register --exit-child --transpile-only --respawn --ignore-watch node_modules src/shared/infra/http/server.ts",
     "typeorm": "tsnd ./node_modules/typeorm/cli",
     "test": "jest"
   },
