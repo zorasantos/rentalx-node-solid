@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "tsnd --inspect -r tsconfig-paths/register --exit-child --transpile-only --respawn --ignore-watch node_modules src/shared/infra/http/server.ts",
     "typeorm": "tsnd ./node_modules/typeorm/cli",
+    "seed:admin": "tsnd src/shared/infra/typeorm/seed/admin.ts",
+    "build": "tsc",
     "test": "jest"
   },
   "dependencies": {
