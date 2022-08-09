@@ -1,3 +1,6 @@
+import { inject, injectable } from 'tsyringe';
+
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { ICarRepository } from '@modules/cars/repositories/ICarsRepository';
 import { ISpecificationsRepository } from '@modules/cars/repositories/ISpecificationsRepository';
 import { AppError } from '@shared/errors/AppError';
@@ -7,12 +10,15 @@ interface IRequest {
   specification_id: string[];
 }
 
+@injectable()
 class CreateCarSpecificationUseCase {
   constructor(
+    @inject('CarsRepository')
     private carsRepository: ICarRepository,
+    @inject('SpecificationsRepository')
     private specificationsRepository: ISpecificationsRepository
   ) {}
-  async execute({ car_id, specification_id }: IRequest): Promise<void> {
+  async execute({ car_id, specification_id }: IRequest): Promise<Car> {
     const carExists = await this.carsRepository.findById(car_id);
 
     if (!carExists) {
@@ -20,9 +26,12 @@ class CreateCarSpecificationUseCase {
     }
 
     const specifications = await this.specificationsRepository.findByIds(specification_id);
+    console.log('specifications', specifications);
     carExists.specifications = specifications;
 
     await this.carsRepository.create(carExists);
+
+    return carExists;
   }
 }
 
